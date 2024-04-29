@@ -1,44 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
 import React, {useState} from 'react'
+import './App.css';
 
 function App() {
-  const[username, setUsername] = useState("");
-  const[pass, setPass]=useState("");
-  const[match, setMatch]= useState(false);
-  const[authentic, setAuthentic] = useState("");
 
-  const handleForm = (e) =>{
-    e.preventDefault();
-    if(username === "user" && pass === "password" ){
-      setMatch(true);
-      setAuthentic("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [match, setMatch] = useState(false);
+  const [validate, setValidate] = useState("");
+    
+  const fromsubmit = (event) =>{
+    event.preventDefault();
+
+    if(username === "user" && password === "password"){
+      setMatch(true)
+      setValidate("")
     }else{
-      setMatch(false);
-      setAuthentic("Invalid username or password");
+      setMatch(false)
+      setValidate("Invalid username or password")
     }
   }
 
-  
   return (
     <div className="App">
       <h1>Login Page</h1>
-      {authentic && <p>{authentic}</p>}
-      {match ? <h1>Welcome, user!</h1>:<form onSubmit={handleForm}>
-        <div>
-          <label>Username:
-            <input type='text'  value={username} onChange={(e)=>setUsername(e.target.value)} required/>
-
-
-          </label><br></br>
-          <label>Password:
-            <input type='text'  value={pass} onChange={(e)=>setPass(e.target.value)} required/>
-
-
-          </label><br></br>
-          <button type='submit'>Submit</button>
-          
-        </div>
+      {validate && <p>{validate}</p>}
+      { match ? <h1>Welcome, user!</h1> : <form>
+          <div>
+          <label>Username:</label>
+          <input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} required></input>
+          </div>
+          <div>
+          <label>Password:</label>
+          <input type='text' value={password} onChange={(e) => setPassword(e.target.value)} required></input>
+          </div>
+          <button type='submit' onClick={(e)=>fromsubmit(e)}>Submit</button>
         </form>}
     </div>
   );
