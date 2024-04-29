@@ -27,12 +27,12 @@ function App() {
       {match ? <h1>Welcome, user!</h1>:<form onSubmit={handleForm}>
         <div>
           <label>Username:
-            <input type='text' placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)} required/>
+            <input type='text'  value={username} onChange={(e)=>setUsername(e.target.value)} required/>
 
 
           </label><br></br>
           <label>Password:
-            <input type='text' placeholder="password" value={pass} onChange={(e)=>setPass(e.target.value)} required/>
+            <input type='text'  value={pass} onChange={(e)=>setPass(e.target.value)} required/>
 
 
           </label><br></br>
